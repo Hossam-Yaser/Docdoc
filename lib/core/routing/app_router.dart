@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
+    //you can pass arguments to the screens through settings.arguments as className
+    final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.onboarding:
         // Return the onboarding screen route
