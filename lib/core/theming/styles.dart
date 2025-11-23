@@ -7,20 +7,24 @@ class TextStyles {
     fontSize: 24.sp,
     fontWeight: FontWeight.w700,
     color: Colors.black,
+    fontFamily: "Inter",
   );
   static TextStyle font32BlueBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeight.bold,
     color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
   );
   static TextStyle font13greyregular = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeight.normal,
     color: ColorsManager.grey,
+    fontFamily: "Inter",
   );
   static TextStyle font16WhiteSemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
     color: Colors.white,
+    fontFamily: "Inter",
   );
 }
