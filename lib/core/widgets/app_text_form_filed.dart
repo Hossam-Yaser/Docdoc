@@ -7,6 +7,8 @@ class AppTextFormFiled extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
+  final InputBorder? errorBorder;
+  final InputBorder? focusedErrorBorder;
   final TextStyle? inputTextStyle;
   final TextStyle? hintStyle;
   final String hintText;
@@ -14,7 +16,7 @@ class AppTextFormFiled extends StatelessWidget {
   final Widget? suffixIcon;
   final Color? backgroundColor;
   final TextEditingController? controller;
-  final Function(String?) validator;
+  final String? Function(String?)? validator;
   const AppTextFormFiled({
     super.key,
     this.contentPadding,
@@ -28,11 +30,15 @@ class AppTextFormFiled extends StatelessWidget {
     this.backgroundColor,
     this.controller,
     required this.validator,
+    this.errorBorder,
+    this.focusedErrorBorder,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: validator,
+      controller: controller,
       decoration: InputDecoration(
         isDense: true,
         contentPadding:
@@ -47,6 +53,13 @@ class AppTextFormFiled extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(16),
             ),
+        focusedErrorBorder:
+            focusedErrorBorder ??
+            OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.red, width: 1.3),
+              borderRadius: BorderRadius.circular(16),
+            ),
+
         enabledBorder:
             enabledBorder ??
             OutlineInputBorder(
@@ -61,7 +74,14 @@ class AppTextFormFiled extends StatelessWidget {
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: backgroundColor ?? ColorsManager.moreLighterGrey,
+        errorBorder:
+            errorBorder ??
+            OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.red, width: 1.3),
+              borderRadius: BorderRadius.circular(16),
+            ),
       ),
+
       obscureText: isObscureText ?? false,
       style: TextStyles.font14DarkBlueMedium,
     );
