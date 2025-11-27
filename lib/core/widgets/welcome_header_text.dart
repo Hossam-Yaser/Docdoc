@@ -7,11 +7,7 @@ import 'package:doc_doc/core/theming/styles.dart';
 class WelcomeHeaderText extends StatelessWidget {
   final String mainTitle;
   final String? supTitle;
-  const WelcomeHeaderText({
-    super.key,
-    required this.mainTitle,
-    required this.supTitle,
-  });
+  const WelcomeHeaderText({super.key, required this.mainTitle, this.supTitle});
 
   @override
   Widget build(BuildContext context) {

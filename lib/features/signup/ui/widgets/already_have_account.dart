@@ -1,12 +1,11 @@
 import 'package:doc_doc/core/helpers/extentions.dart';
-import 'package:doc_doc/core/routing/routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/theming/styles.dart';
 
-class DontHaveAccountText extends StatelessWidget {
-  const DontHaveAccountText({super.key});
+class AlreadyHaveAccount extends StatelessWidget {
+  const AlreadyHaveAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class DontHaveAccountText extends StatelessWidget {
             style: TextStyles.font13BlueSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pushReplacementNamed(Routes.signUpScreen);
+                context.pop();
               },
           ),
         ],

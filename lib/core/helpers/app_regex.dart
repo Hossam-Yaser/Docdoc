@@ -12,7 +12,21 @@ class AppRegex {
   }
 
   static bool isPhoneNumberValid(String phoneNumber) {
-    return RegExp(r'^(010|011|012|015)[0-9]{8}$').hasMatch(phoneNumber);
+    // Remove spaces and special characters
+    final cleanPhone = phoneNumber.replaceAll(RegExp(r'[\s\-\(\)]'), '');
+
+    // Pattern for international format: +20 then (10|11|12|15) then 8 digits
+    final internationalPattern = RegExp(r'^\+20(10|11|12|15)\d{8}$');
+
+    // Pattern for local format: 0 then (10|11|12|15) then 8 digits
+    final localPattern = RegExp(r'^0(10|11|12|15)\d{8}$');
+
+    // Pattern for local without leading zero: (10|11|12|15) then 8 digits
+    final localNoZeroPattern = RegExp(r'^(10|11|12|15)\d{8}$');
+
+    return internationalPattern.hasMatch(cleanPhone) ||
+        localPattern.hasMatch(cleanPhone) ||
+        localNoZeroPattern.hasMatch(cleanPhone);
   }
 
   static bool hasLowerCase(String password) {
