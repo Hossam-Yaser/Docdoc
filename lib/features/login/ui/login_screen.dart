@@ -1,6 +1,7 @@
 import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
+import 'package:doc_doc/core/widgets/welcome_header_text.dart';
 import 'package:doc_doc/features/login/data/models/login_request_body.dart';
 import 'package:doc_doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:doc_doc/features/login/ui/widgets/dont_have_account_text.dart';
@@ -30,11 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Welcome Back", style: TextStyles.font24BlueBold),
-                verticalSpacing(8),
-                Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: TextStyles.font14Greyregular,
+                WelcomeHeaderText(
+                  mainTitle: "Welcome Back!",
+                  supTitle:
+                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
                 ),
                 verticalSpacing(36),
                 Column(
