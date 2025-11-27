@@ -49,7 +49,18 @@ class TextStyles {
     color: ColorsManager.lightGrey,
     fontFamily: "Inter",
   );
-
+  static TextStyle font14BlueSemiBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontweightHelper.semiBold,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font15BlueMedium = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
   static TextStyle font14Greyregular = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontweightHelper.regular,
