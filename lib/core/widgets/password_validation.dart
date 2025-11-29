@@ -2,7 +2,6 @@ import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class PasswordValidations extends StatelessWidget {
   final bool hasLowerCase;

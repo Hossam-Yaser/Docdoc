@@ -3,10 +3,12 @@ import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
 import 'package:doc_doc/core/widgets/welcome_header_text.dart';
 import 'package:doc_doc/core/widgets/terms_and_conditions_text.dart';
-import 'package:doc_doc/features/login/ui/widgets/login_icons_widgets.dart';
+import 'package:doc_doc/features/signup/data/models/signup_request_body.dart';
+import 'package:doc_doc/features/signup/logic/signup_cubit.dart';
 import 'package:doc_doc/features/signup/ui/widgets/already_have_account.dart';
 import 'package:doc_doc/features/signup/ui/widgets/recive_user_data_text_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -28,30 +30,42 @@ class SignupScreen extends StatelessWidget {
                       "Sign up now and start exploring all that our app has to offer. We're excited to welcome you to our community!",
                 ),
                 verticalSpacing(36),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ReciveUserDataTextFields(),
-
-                    verticalSpacing(30),
-                    AppTextButton(
-                      buttonText: "Sign Up",
-                      textStyle: TextStyles.font16WhiteSemiBold,
-                      onPressed: () {},
-                    ),
-                    verticalSpacing(46),
-                    LoginIconsWidgets(),
-                    verticalSpacing(32),
-                    TermsAndConditionsText(),
-                    verticalSpacing(24),
-                    AlreadyHaveAccount(),
-                  ],
+                ReciveUserDataTextFields(),
+                verticalSpacing(30),
+                AppTextButton(
+                  buttonText: "Sign Up",
+                  textStyle: TextStyles.font16WhiteSemiBold,
+                  onPressed: () {
+                    validateThenDoSignUp(context);
+                  },
                 ),
+                verticalSpacing(46),
+                TermsAndConditionsText(),
+                verticalSpacing(24),
+                AlreadyHaveAccount(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void validateThenDoSignUp(BuildContext context) {
+    if (context.read<SignupCubit>().formKey.currentState!.validate()) {
+      context.read<SignupCubit>().emitSignupStates(
+        SignupRequestBody(
+          email: context.read<SignupCubit>().emailController.text,
+          password: context.read<SignupCubit>().passwordController.text,
+          name: context.read<SignupCubit>().nameController.text,
+          phone: context.read<SignupCubit>().phoneController.text,
+          passwordConfirmation: context
+              .read<SignupCubit>()
+              .passwordConfirmationController
+              .text,
+          gender: context.read<SignupCubit>().gender,
+        ),
+      );
+    }
   }
 }

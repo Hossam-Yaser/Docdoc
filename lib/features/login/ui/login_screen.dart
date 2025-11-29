@@ -6,7 +6,7 @@ import 'package:doc_doc/features/login/data/models/login_request_body.dart';
 import 'package:doc_doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:doc_doc/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:doc_doc/features/login/ui/widgets/email_and_password.dart';
-import 'package:doc_doc/features/login/ui/widgets/login_icons_widgets.dart';
+import 'package:doc_doc/core/widgets/login_icons_widgets.dart';
 import 'package:doc_doc/features/login/ui/widgets/rememberme_and_forgetpassword.dart';
 import 'package:doc_doc/core/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
@@ -52,7 +52,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                     verticalSpacing(46),
-
                     LoginIconsWidgets(),
                     verticalSpacing(32),
                     TermsAndConditionsText(),

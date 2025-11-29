@@ -42,6 +42,7 @@ class _AppTextFormFiledState extends State<AppTextFormFiled> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
       controller: widget.controller,
       decoration: InputDecoration(

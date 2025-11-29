@@ -1,4 +1,5 @@
 import 'package:doc_doc/core/helpers/extentions.dart';
+import 'package:doc_doc/core/routing/routes.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class AlreadyHaveAccount extends StatelessWidget {
             style: TextStyles.font13BlueSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                context.pop();
+                context.pushReplacementNamed(Routes.loginScreen);
               },
           ),
         ],

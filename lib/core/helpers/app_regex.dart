@@ -5,10 +5,33 @@ class AppRegex {
     ).hasMatch(email);
   }
 
-  static bool isPasswordValid(String password) {
-    return RegExp(
-      r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
-    ).hasMatch(password);
+  static bool isPasswordValid(
+    String password, {
+    int minLength = 8,
+    bool requireUppercase = true,
+    bool requireLowercase = true,
+    bool requireNumber = true,
+    bool requireSpecialChar = true,
+    String specialChars = r"#@$!%*?&",
+  }) {
+    String pattern = r"^";
+
+    if (requireLowercase) {
+      pattern += r"(?=.*[a-z])";
+    }
+    if (requireUppercase) {
+      pattern += r"(?=.*[A-Z])";
+    }
+    if (requireNumber) {
+      pattern += r"(?=.*\d)";
+    }
+    if (requireSpecialChar) {
+      pattern += "(?=.*[$specialChars])";
+    }
+
+    pattern += "[A-Za-z0-9$specialChars]{$minLength,}\$";
+
+    return RegExp(pattern).hasMatch(password);
   }
 
   static bool isPhoneNumberValid(String phoneNumber) {
