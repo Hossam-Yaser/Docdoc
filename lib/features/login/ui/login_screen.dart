@@ -1,13 +1,14 @@
 import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
+import 'package:doc_doc/core/widgets/welcome_header_text.dart';
 import 'package:doc_doc/features/login/data/models/login_request_body.dart';
 import 'package:doc_doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:doc_doc/features/login/ui/widgets/dont_have_account_text.dart';
 import 'package:doc_doc/features/login/ui/widgets/email_and_password.dart';
-import 'package:doc_doc/features/login/ui/widgets/login_icons_widgets.dart';
+import 'package:doc_doc/core/widgets/login_icons_widgets.dart';
 import 'package:doc_doc/features/login/ui/widgets/rememberme_and_forgetpassword.dart';
-import 'package:doc_doc/features/login/ui/widgets/terms_and_conditions_text.dart';
+import 'package:doc_doc/core/widgets/terms_and_conditions_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,11 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Welcome Back", style: TextStyles.font24BlueBold),
-                verticalSpacing(8),
-                Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: TextStyles.font14Greyregular,
+                WelcomeHeaderText(
+                  mainTitle: "Welcome Back!",
+                  supTitle:
+                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
                 ),
                 verticalSpacing(36),
                 Column(
@@ -51,26 +51,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         validateThenDoLogin(context);
                       },
                     ),
-                    verticalSpacing(20),
-                    Row(
-                      children: [
-                        Expanded(child: Divider()),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: Text(
-                            "OR Sign in with",
-                            style: TextStyles.font13greyregular,
-                          ),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    verticalSpacing(32),
+                    verticalSpacing(46),
                     LoginIconsWidgets(),
                     verticalSpacing(32),
-                    DontHaveAccountText(),
-                    verticalSpacing(24),
                     TermsAndConditionsText(),
+                    verticalSpacing(24),
+                    DontHaveAccountText(),
                   ],
                 ),
               ],

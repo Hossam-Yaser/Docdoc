@@ -55,6 +55,13 @@ class TextStyles {
     color: ColorsManager.mainBlue,
     fontFamily: "Inter",
   );
+  static TextStyle font15DarkBlueMedium = TextStyle(
+    fontSize: 15.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
+
   static TextStyle font15BlueMedium = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontweightHelper.medium,
@@ -74,6 +81,12 @@ class TextStyles {
     fontFamily: "Inter",
   );
 
+  static TextStyle font16DarkBluemedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
   static TextStyle font24BlackBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontweightHelper.bold,

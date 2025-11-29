@@ -3,7 +3,7 @@ import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppTextFormFiled extends StatelessWidget {
+class AppTextFormFiled extends StatefulWidget {
   final EdgeInsetsGeometry? contentPadding;
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
@@ -35,17 +35,23 @@ class AppTextFormFiled extends StatelessWidget {
   });
 
   @override
+  State<AppTextFormFiled> createState() => _AppTextFormFiledState();
+}
+
+class _AppTextFormFiledState extends State<AppTextFormFiled> {
+  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: validator,
-      controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      validator: widget.validator,
+      controller: widget.controller,
       decoration: InputDecoration(
         isDense: true,
         contentPadding:
-            contentPadding ??
+            widget.contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.h),
         focusedBorder:
-            focusedBorder ??
+            widget.focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
                 color: ColorsManager.mainBlue,
@@ -54,14 +60,14 @@ class AppTextFormFiled extends StatelessWidget {
               borderRadius: BorderRadius.circular(16),
             ),
         focusedErrorBorder:
-            focusedErrorBorder ??
+            widget.focusedErrorBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red, width: 1.3),
               borderRadius: BorderRadius.circular(16),
             ),
 
         enabledBorder:
-            enabledBorder ??
+            widget.enabledBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
                 color: ColorsManager.lighterGrey,
@@ -69,20 +75,20 @@ class AppTextFormFiled extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(16),
             ),
-        hintStyle: hintStyle ?? TextStyles.font14lightGreyregular,
-        hintText: hintText,
-        suffixIcon: suffixIcon,
+        hintStyle: widget.hintStyle ?? TextStyles.font14lightGreyregular,
+        hintText: widget.hintText,
+        suffixIcon: widget.suffixIcon,
         filled: true,
-        fillColor: backgroundColor ?? ColorsManager.moreLighterGrey,
+        fillColor: widget.backgroundColor ?? ColorsManager.moreLighterGrey,
         errorBorder:
-            errorBorder ??
+            widget.errorBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(color: Colors.red, width: 1.3),
               borderRadius: BorderRadius.circular(16),
             ),
       ),
 
-      obscureText: isObscureText ?? false,
+      obscureText: widget.isObscureText ?? false,
       style: TextStyles.font14DarkBlueMedium,
     );
   }
