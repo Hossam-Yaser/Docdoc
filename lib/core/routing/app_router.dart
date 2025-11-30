@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AppRouter {
   Route generateRoute(RouteSettings settings) {
     //you can pass arguments to the screens through settings.arguments as className
-    final arguments = settings.arguments;
+    // final arguments = settings.arguments;
     switch (settings.name) {
       case Routes.onboarding:
         // Return the onboarding screen route
