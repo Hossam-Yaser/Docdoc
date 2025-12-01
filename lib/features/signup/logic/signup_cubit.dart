@@ -18,7 +18,7 @@ class SignupCubit extends Cubit<SignupState> {
   int gender = 0;
   final formKey = GlobalKey<FormState>();
 
-  void emitSignupStates(SignupRequestBody signupRequestBody) async {
+  void emitSignupStates() async {
     emit(const SignupState.signupLoading());
     final response = await _signupRepo.signup(
       SignupRequestBody(

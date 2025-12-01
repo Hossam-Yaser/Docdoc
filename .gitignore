@@ -16,8 +16,6 @@ build/
 /web/
 
 
-# VS Code
-.vscode/
 
 # IntelliJ
 .idea/

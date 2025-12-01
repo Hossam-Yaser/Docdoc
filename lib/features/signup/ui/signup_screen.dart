@@ -3,10 +3,10 @@ import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
 import 'package:doc_doc/core/widgets/welcome_header_text.dart';
 import 'package:doc_doc/core/widgets/terms_and_conditions_text.dart';
-import 'package:doc_doc/features/signup/data/models/signup_request_body.dart';
 import 'package:doc_doc/features/signup/logic/signup_cubit.dart';
 import 'package:doc_doc/features/signup/ui/widgets/already_have_account.dart';
 import 'package:doc_doc/features/signup/ui/widgets/recive_user_data_text_fields.dart';
+import 'package:doc_doc/features/signup/ui/widgets/signup_bloc_listener.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -43,6 +43,7 @@ class SignupScreen extends StatelessWidget {
                 TermsAndConditionsText(),
                 verticalSpacing(24),
                 AlreadyHaveAccount(),
+                SignupBlocListener(),
               ],
             ),
           ),
@@ -53,19 +54,7 @@ class SignupScreen extends StatelessWidget {
 
   void validateThenDoSignUp(BuildContext context) {
     if (context.read<SignupCubit>().formKey.currentState!.validate()) {
-      context.read<SignupCubit>().emitSignupStates(
-        SignupRequestBody(
-          email: context.read<SignupCubit>().emailController.text,
-          password: context.read<SignupCubit>().passwordController.text,
-          name: context.read<SignupCubit>().nameController.text,
-          phone: context.read<SignupCubit>().phoneController.text,
-          passwordConfirmation: context
-              .read<SignupCubit>()
-              .passwordConfirmationController
-              .text,
-          gender: context.read<SignupCubit>().gender,
-        ),
-      );
+      context.read<SignupCubit>().emitSignupStates();
     }
   }
 }
