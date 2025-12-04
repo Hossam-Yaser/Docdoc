@@ -27,10 +27,12 @@ jobs:
           java-version: '11'
 
       # Step 3: Setup Flutter
-      - name: Install Flutter
+      - name: Set up Flutter
         uses: subosito/flutter-action@v2
+        id: flutter-action
         with:
-          flutter-version: '3.16.5'  
+          channel: stable
+          cache: true  
 
 
       # Step 4: Cache Flutter dependencies (optional, speeds up builds)
