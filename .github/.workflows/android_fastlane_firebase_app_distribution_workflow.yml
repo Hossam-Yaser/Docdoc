@@ -1,0 +1,65 @@
+name: Android Fastlane Firebase CI/CD
+
+on:
+  push:
+    branches:
+      - development
+      - main   # optional: also trigger on main branch
+  pull_request:
+    branches:
+      - development
+
+jobs:
+  build_and_distribute:
+    name: Build & Distribute
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Setup Java
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      # Step 3: Setup Flutter
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'stable'
+
+      # Step 4: Cache Flutter dependencies (optional, speeds up builds)
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.pub-cache
+            .packages
+          key: ${{ runner.os }}-flutter-${{ hashFiles('**/pubspec.yaml') }}
+
+      # Step 5: Install Ruby for Fastlane
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      # Step 6: Install Fastlane
+      - name: Install Fastlane
+        run: gem install fastlane
+
+      # Step 7: Flutter clean & pub get
+      - name: Flutter Clean & Pub Get
+        run: |
+          flutter clean
+          flutter pub get
+
+      # Step 8: Build & distribute APK to Firebase App Distribution
+      - name: Build & Distribute to Firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          fastlane android distribute_to_firebase_app_distribution
