@@ -65,4 +65,4 @@ jobs:
         env:
           FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
         run: |
-          fastlane android distribute_to_firebase_app_distribution
+          fastlane android firebase_distribution
