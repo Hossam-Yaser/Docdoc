@@ -30,7 +30,9 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: 'stable'
+          channel: 'stable'
+          flutter-version: 'latest'
+
 
       # Step 4: Cache Flutter dependencies (optional, speeds up builds)
       - name: Cache Flutter dependencies
@@ -60,6 +62,6 @@ jobs:
       # Step 8: Build & distribute APK to Firebase App Distribution
       - name: Build & Distribute to Firebase
         env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_CLI_TOKEN: ${{ secrets.FIREBASE_CLI_TOKEN }}
         run: |
           fastlane android distribute_to_firebase_app_distribution
