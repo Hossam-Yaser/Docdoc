@@ -8,8 +8,6 @@
 build/
 
 # Ignore platform-specific folders
-/android/
-/ios/
 /linux/
 /macos/
 /windows/

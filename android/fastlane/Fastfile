@@ -1,0 +1,18 @@
+default_platform(:android)
+
+platform :android do
+  desc "Lane for android app destribution"
+  lane :firebase_distribution do
+    sh "flutter clean"
+    sh "flutter pub get"
+    sh "flutter build apk --flavor production --release --target lib/main_production.dart --no-tree-shake-icons"
+    firebase_app_distribution(
+    app: "1:306456249070:android:f02e0e110399f5b9a8a9ff",
+    firebase_cli_token:ENV["GOOGLE_OAUTH_TOKEN"],
+    android_artifact_type:"APK",
+    android_artifact_path:"../build/app/outputs/flutter-apk/app-production-release.apk",
+    testers:"mindtech1911@gmail.com",
+    release_notes:"New version available",
+  )
+  end
+end
