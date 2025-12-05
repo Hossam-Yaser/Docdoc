@@ -4,6 +4,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
+  static TextStyle font12BlueRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontweightHelper.regular,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font12DarkBlueRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontweightHelper.regular,
+    color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font12GreyMeduim = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.grey,
+    fontFamily: "Inter",
+  );
+
   static TextStyle font13greyregular = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontweightHelper.regular,
@@ -84,6 +103,19 @@ class TextStyles {
   static TextStyle font16DarkBluemedium = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontweightHelper.medium,
+    color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
+
+  static TextStyle font18DarkBlueBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontweightHelper.bold,
+    color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font18DarkBlueSemiBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontweightHelper.semiBold,
     color: ColorsManager.darkBlue,
     fontFamily: "Inter",
   );
