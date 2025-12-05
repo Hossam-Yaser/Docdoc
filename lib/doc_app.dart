@@ -21,7 +21,7 @@ class Docdoc extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: Routes.homeScreen,
+        initialRoute: Routes.onboarding,
       ),
     );
   }
