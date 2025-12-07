@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:doc_doc/core/helpers/constants.dart';
+import 'package:doc_doc/core/helpers/shared_prefrance.dart';
 //import 'package:flutter_complete_project/core/helpers/constants.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -24,13 +26,11 @@ class DioFactory {
     }
   }
 
-  static void addDioHeaders() {
+  static void addDioHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization':
-          'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZjYXJlLmludGVncmF0aW9uMjUuY29tL2FwaS9hdXRoL2xvZ2luIiwiaWF0IjoxNzY1MDYzMDQxLCJleHAiOjE3NjUxNDk0NDEsIm5iZiI6MTc2NTA2MzA0MSwianRpIjoiMzdoOVBOMm1leHJDV0pmZiIsInN1YiI6IjU5NzUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.bPMcNGmiYzHATscGxzQ6nwYo_ImqOWEMPEkgnWRCkW4',
-      //        'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
-      //};
+          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken)}',
     };
   }
 
