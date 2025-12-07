@@ -1,10 +1,16 @@
+import 'dart:developer';
+
 import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
+import 'package:doc_doc/features/home/logic/home_cubit.dart';
+import 'package:doc_doc/features/home/logic/home_states.dart';
 import 'package:doc_doc/features/home/ui/widgets/doctors_blue_container.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors_list_view.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors_speciality_list_view.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors_speciality_see_all.dart';
+import 'package:doc_doc/features/home/ui/widgets/doctors/doctors_list_view.dart';
+import 'package:doc_doc/features/home/ui/widgets/speciality/doctors_speciality_list_view.dart';
+import 'package:doc_doc/features/home/ui/widgets/speciality/doctors_speciality_see_all.dart';
 import 'package:doc_doc/features/home/ui/widgets/home_top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,13 +30,55 @@ class HomeScreen extends StatelessWidget {
               const DoctorsBlueContainer(),
               verticalSpacing(16),
               const DoctorsSpecialitySeeAll(),
-              const DoctorsSpecialityListView(),
-              verticalSpacing(8),
-              const DoctorsListView(),
+              BlocBuilder<HomeCubit, HomeStates>(
+                buildWhen: (previous, current) =>
+                    current is Specializationloading ||
+                    current is Specializationsuccess ||
+                    current is Specializationerror,
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    specializationloading: () {
+                      return setupLoading();
+                    },
+                    specializationSuccess: (specializationSuccess) {
+                      return setupSuccess(specializationSuccess);
+                    },
+                    specializationerror: (errorHandler) {
+                      return setupError();
+                    },
+                    orElse: () => const SizedBox.shrink(),
+                  );
+                },
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget setupLoading() {
+    return const SizedBox(
+      height: 100,
+      child: Center(child: CircularProgressIndicator()),
+    );
+  }
+
+  Widget setupSuccess(SpecializationsResponse specializationSuccess) {
+    var response = specializationSuccess.data;
+
+    return Expanded(
+      child: Column(
+        children: [
+          DoctorsSpecialityListView(specialization: response),
+          verticalSpacing(8),
+          Expanded(child: DoctorsListView(doctorsList: response?[0].doctors)),
+        ],
+      ),
+    );
+  }
+
+  Widget setupError() {
+    return SizedBox.shrink();
   }
 }

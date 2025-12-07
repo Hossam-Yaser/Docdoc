@@ -1,5 +1,6 @@
 import 'package:doc_doc/core/di/depandency_injection.dart';
 import 'package:doc_doc/core/routing/routes.dart';
+import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/ui/home_screen.dart';
 import 'package:doc_doc/features/login/logic/cubit/login_cubit.dart';
 import 'package:doc_doc/features/login/ui/login_screen.dart';
@@ -33,7 +34,12 @@ class AppRouter {
           ),
         );
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>()..getAllSpecializations(),
+            child: const HomeScreen(),
+          ),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
