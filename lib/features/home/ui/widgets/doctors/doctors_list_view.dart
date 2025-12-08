@@ -6,18 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoctorsListView extends StatelessWidget {
-  final dynamic doctorsList;
+  final List<Doctor>? doctorsList;
   const DoctorsListView({super.key, required this.doctorsList});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: ListView.builder(
-        itemCount: doctorsList.length,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return DoctorsListViewItem(doctor: doctorsList[index]);
-        },
+    return Expanded(
+      child: SizedBox(
+        child: ListView.builder(
+          itemCount: doctorsList?.length,
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return DoctorsListViewItem(doctor: doctorsList?[index]);
+          },
+        ),
       ),
     );
   }

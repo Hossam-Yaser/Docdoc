@@ -23,8 +23,8 @@ class DoctorsListViewItem extends StatelessWidget {
               height: 120.h,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return Image.network(
-                  "https://static.wikia.nocookie.net/five-world-war/images/6/64/Hisoka.jpg/revision/latest?cb=20190313114050",
+                return Image.asset(
+                  "assets/images/onboarding_doctorImage.png",
                   width: 110.w,
                   height: 120.h,
                   fit: BoxFit.cover,
