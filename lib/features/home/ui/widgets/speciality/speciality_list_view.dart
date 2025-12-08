@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:doc_doc/core/helpers/extentions.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
@@ -21,6 +22,18 @@ class DoctorsSpecialityListView extends StatefulWidget {
 
 class _DoctorsSpecialityListViewState extends State<DoctorsSpecialityListView> {
   var selectedSpecializationIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Trigger doctors for default index = 0
+    if (!widget.specializationsList.isNullOrEmpty()) {
+      context.read<HomeCubit>().getDoctorsList(
+        specializationId: widget.specializationsList![0].id,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
