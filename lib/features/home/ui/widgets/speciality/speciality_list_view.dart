@@ -39,27 +39,29 @@ class _DoctorsSpecialityListViewState extends State<DoctorsSpecialityListView> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100.h,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemCount: widget.specializationsList?.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedSpecializationIndex = index;
-              });
-              context.read<HomeCubit>().getDoctorsList(
-                specializationId: widget.specializationsList?[index].id,
-              );
-            },
-            child: DoctorSpecialityListViewItem(
-              itemIndex: index,
-              specializationData: widget.specializationsList?[index],
-              selectedIndex: selectedSpecializationIndex,
-            ),
-          );
-        },
+      child: Center(
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: widget.specializationsList?.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedSpecializationIndex = index;
+                });
+                context.read<HomeCubit>().getDoctorsList(
+                  specializationId: widget.specializationsList?[index].id,
+                );
+              },
+              child: DoctorSpecialityListViewItem(
+                itemIndex: index,
+                specializationData: widget.specializationsList?[index],
+                selectedIndex: selectedSpecializationIndex,
+              ),
+            );
+          },
+        ),
       ),
     );
   }

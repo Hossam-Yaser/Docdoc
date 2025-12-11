@@ -1,6 +1,9 @@
+import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 
 class HomeTopBar extends StatelessWidget {
   const HomeTopBar({super.key});
@@ -22,9 +25,23 @@ class HomeTopBar extends StatelessWidget {
           onTap: () {},
           child: CircleAvatar(
             radius: 24.r,
-            backgroundImage: const AssetImage("assets/icons/Notification.png"),
+            backgroundColor: ColorsManager.lighterGrey,
+            child: SvgPicture.asset(
+              "assets/svgs/home_search.svg",
+              color: Colors.black,
+            ),
           ),
         ),
+        horizontalSpacing(8),
+        GestureDetector(
+          onTap: () {},
+          child: CircleAvatar(
+            radius: 24.r,
+            backgroundColor: ColorsManager.lighterGrey,
+            child: SvgPicture.asset("assets/svgs/home_notification.svg"),
+          ),
+        ),
+        IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
       ],
     );
   }
