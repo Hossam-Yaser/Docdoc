@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           width: double.infinity,
-          margin: const EdgeInsetsGeometry.fromLTRB(20, 16, 20, 28),
+          margin: const EdgeInsetsGeometry.fromLTRB(20, 16, 20, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
               const DoctorsBlueContainer(),
               verticalSpacing(16),
               const DoctorsSpecialitySeeAll(),
+              verticalSpacing(8),
               SpecializationsBlocBuilder(),
               DoctorsBlocBuilder(),
             ],

@@ -1,3 +1,5 @@
+import 'package:doc_doc/core/helpers/extentions.dart';
+import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +13,12 @@ class DoctorsSpecialitySeeAll extends StatelessWidget {
       children: [
         Text('Doctors Speciality', style: TextStyles.font18DarkBlueSemiBold),
         Spacer(),
-        Text('See All', style: TextStyles.font12BlueRegular),
+        GestureDetector(
+          onTap: () {
+            context.pushNamed(Routes.allSpecialityScreen);
+          },
+          child: Text('See All', style: TextStyles.font12BlueRegular),
+        ),
       ],
     );
   }
