@@ -1,4 +1,5 @@
 import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
 import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_list_view.dart';
@@ -46,7 +47,7 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(specializationsList) {
+  Widget setupSuccess(List<Specialization>? specializationsList) {
     return DoctorsSpecialityListView(
       specializationsList: specializationsList ?? [],
     );

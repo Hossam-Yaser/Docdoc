@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:doc_doc/core/networking/api_service.dart';
 import 'package:doc_doc/core/networking/dio_factory.dart';
+import 'package:doc_doc/features/all_speciality/logic/all_speciality_cubit.dart';
 import 'package:doc_doc/features/home/data/repos/home_specialization_repo.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/login/data/repos/login_repo.dart';
@@ -28,4 +29,9 @@ Future<void> setupGetIt() async {
     () => HomeSpecializationRepo(getIt()),
   );
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
+
+  //all Speciality
+  getIt.registerFactory<AllSpecialityCubitCubit>(
+    () => AllSpecialityCubitCubit(getIt()),
+  );
 }

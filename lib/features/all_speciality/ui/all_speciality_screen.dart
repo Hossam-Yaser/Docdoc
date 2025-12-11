@@ -1,6 +1,8 @@
+import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/features/all_speciality/ui/widgets/custom_app_bar.dart';
+import 'package:doc_doc/features/all_speciality/ui/widgets/speciality_grid_view_bloc_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +19,8 @@ class AllSpecialityScreen extends StatelessWidget {
             children: [
               // Custom App Bar
               CustomAppBar(),
-              SizedBox(height: 24.h),
+              verticalSpacing(48),
+              SpecialityGridViewBlocBuilder(),
             ],
           ),
         ),
