@@ -6,7 +6,7 @@ import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
 import 'package:doc_doc/features/home/ui/widgets/doctors/doctors_bloc_builder.dart';
 import 'package:doc_doc/features/home/ui/widgets/doctors_blue_container.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors/doctors_list_view.dart';
+import 'package:doc_doc/core/widgets/doctors/doctors_list_view.dart';
 import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_bloc_builder.dart';
 import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_list_view.dart';
 import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_see_all.dart';

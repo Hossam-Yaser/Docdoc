@@ -9,6 +9,7 @@ import 'package:doc_doc/features/login/ui/login_screen.dart';
 import 'package:doc_doc/features/onboarding/onboarding_screen.dart';
 import 'package:doc_doc/features/signup/logic/signup_cubit.dart';
 import 'package:doc_doc/features/signup/ui/signup_screen.dart';
+import 'package:doc_doc/features/view_speciality_doctors/UI/view_speciality_doctors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -49,6 +50,11 @@ class AppRouter {
                 getIt<AllSpecialityCubitCubit>()..getAllSpecializations(),
             child: const AllSpecialityScreen(),
           ),
+        );
+      case Routes.viewSpecialityDoctors:
+        return MaterialPageRoute(
+          builder: (_) => const ViewSpecialityDoctors(),
+          settings: settings,
         );
       default:
         return MaterialPageRoute(

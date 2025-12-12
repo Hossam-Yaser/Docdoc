@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  final String? title;
+  const CustomAppBar({super.key, this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class CustomAppBar extends StatelessWidget {
         Expanded(
           child: Center(
             child: Text(
-              'Doctor Speciality',
+              title ?? 'Doctor Speciality',
               style: TextStyles.font18DarkBlueSemiBold,
             ),
           ),
