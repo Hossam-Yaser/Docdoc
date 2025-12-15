@@ -1,4 +1,6 @@
+import 'package:doc_doc/core/helpers/constants.dart';
 import 'package:doc_doc/core/helpers/extentions.dart';
+import 'package:doc_doc/core/helpers/shared_prefrance.dart';
 import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
@@ -19,8 +21,9 @@ class GetstartedButton extends StatelessWidget {
         ),
       ),
 
-      onPressed: () {
-        context.pushNamed(Routes.loginScreen);
+      onPressed: () async {
+        Navigator.pushReplacementNamed(context, Routes.loginScreen);
+        await SharedPrefHelper.setData(SharedPrefKeys.onboardingSeen, true);
       },
 
       child: Text('GetStarted', style: TextStyles.font16WhiteSemiBold),

@@ -47,4 +47,17 @@ class HomeCubit extends Cubit<HomeStates> {
         ?.firstWhere((specialization) => specialization.id == specializationId)
         .doctors;
   }
+
+  void emitLogoutStates() async {
+    final response = await _homeSpecializationRepo.logOut();
+    response.when(
+      success: (_) async {
+        await SharedPrefHelper.clearAllSecuredData();
+        emit(HomeStates.logoutSuccess());
+      },
+      failure: (_) {
+        emit(HomeStates.logouterror());
+      },
+    );
+  }
 }

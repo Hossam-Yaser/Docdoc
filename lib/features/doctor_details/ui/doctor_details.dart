@@ -17,20 +17,23 @@ class DoctorDetails extends StatelessWidget {
     final doctor = args?['doctorData'];
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            //App Bar
-            verticalSpacing(16),
-            CustomAppBar(title: doctor.name),
-            verticalSpacing(32),
-            // Doctor Info Section
-            DoctorCard(doctor: doctor),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          child: Column(
+            children: [
+              //App Bar
+              verticalSpacing(16),
+              CustomAppBar(title: doctor.name),
+              verticalSpacing(32),
+              // Doctor Info Section
+              DoctorCard(doctor: doctor),
 
-            // TabBar
-            Expanded(child: TabBarWidget(doctor: doctor)),
+              // TabBar
+              Expanded(child: TabBarWidget(doctor: doctor)),
 
-            // TabBarView
-          ],
+              // TabBarView
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(

@@ -8,6 +8,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Docdoc extends StatelessWidget {
   final AppRouter appRouter;
   const Docdoc({super.key, required this.appRouter});
+  String _getInitialRoute() {
+    if (!isOnboardingSeen) {
+      return Routes.onboarding;
+    } else if (isLoggedinUser) {
+      return Routes.homeScreen;
+    } else {
+      return Routes.loginScreen;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,7 @@ class Docdoc extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
         ),
         onGenerateRoute: appRouter.generateRoute,
-        initialRoute: isLoggedinUser ? Routes.homeScreen : Routes.loginScreen,
+        initialRoute: _getInitialRoute(),
       ),
     );
   }
