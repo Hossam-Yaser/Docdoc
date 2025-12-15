@@ -55,7 +55,7 @@ extension HomeStatesPatterns on HomeStates {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Specializationloading value)?  specializationloading,TResult Function( Specializationsuccess value)?  specializationSuccess,TResult Function( Specializationerror value)?  specializationerror,TResult Function( DoctorSuccess value)?  doctorSuccess,TResult Function( DoctorError value)?  doctorError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Initial value)?  initial,TResult Function( Specializationloading value)?  specializationloading,TResult Function( Specializationsuccess value)?  specializationSuccess,TResult Function( Specializationerror value)?  specializationerror,TResult Function( DoctorSuccess value)?  doctorSuccess,TResult Function( DoctorError value)?  doctorError,TResult Function( LogoutSuccess value)?  logoutSuccess,TResult Function( LogoutError value)?  logouterror,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -64,7 +64,9 @@ return specializationloading(_that);case Specializationsuccess() when specializa
 return specializationSuccess(_that);case Specializationerror() when specializationerror != null:
 return specializationerror(_that);case DoctorSuccess() when doctorSuccess != null:
 return doctorSuccess(_that);case DoctorError() when doctorError != null:
-return doctorError(_that);case _:
+return doctorError(_that);case LogoutSuccess() when logoutSuccess != null:
+return logoutSuccess(_that);case LogoutError() when logouterror != null:
+return logouterror(_that);case _:
   return orElse();
 
 }
@@ -82,7 +84,7 @@ return doctorError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Specializationloading value)  specializationloading,required TResult Function( Specializationsuccess value)  specializationSuccess,required TResult Function( Specializationerror value)  specializationerror,required TResult Function( DoctorSuccess value)  doctorSuccess,required TResult Function( DoctorError value)  doctorError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Initial value)  initial,required TResult Function( Specializationloading value)  specializationloading,required TResult Function( Specializationsuccess value)  specializationSuccess,required TResult Function( Specializationerror value)  specializationerror,required TResult Function( DoctorSuccess value)  doctorSuccess,required TResult Function( DoctorError value)  doctorError,required TResult Function( LogoutSuccess value)  logoutSuccess,required TResult Function( LogoutError value)  logouterror,}){
 final _that = this;
 switch (_that) {
 case _Initial():
@@ -91,7 +93,9 @@ return specializationloading(_that);case Specializationsuccess():
 return specializationSuccess(_that);case Specializationerror():
 return specializationerror(_that);case DoctorSuccess():
 return doctorSuccess(_that);case DoctorError():
-return doctorError(_that);case _:
+return doctorError(_that);case LogoutSuccess():
+return logoutSuccess(_that);case LogoutError():
+return logouterror(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -108,7 +112,7 @@ return doctorError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Specializationloading value)?  specializationloading,TResult? Function( Specializationsuccess value)?  specializationSuccess,TResult? Function( Specializationerror value)?  specializationerror,TResult? Function( DoctorSuccess value)?  doctorSuccess,TResult? Function( DoctorError value)?  doctorError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Initial value)?  initial,TResult? Function( Specializationloading value)?  specializationloading,TResult? Function( Specializationsuccess value)?  specializationSuccess,TResult? Function( Specializationerror value)?  specializationerror,TResult? Function( DoctorSuccess value)?  doctorSuccess,TResult? Function( DoctorError value)?  doctorError,TResult? Function( LogoutSuccess value)?  logoutSuccess,TResult? Function( LogoutError value)?  logouterror,}){
 final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
@@ -117,7 +121,9 @@ return specializationloading(_that);case Specializationsuccess() when specializa
 return specializationSuccess(_that);case Specializationerror() when specializationerror != null:
 return specializationerror(_that);case DoctorSuccess() when doctorSuccess != null:
 return doctorSuccess(_that);case DoctorError() when doctorError != null:
-return doctorError(_that);case _:
+return doctorError(_that);case LogoutSuccess() when logoutSuccess != null:
+return logoutSuccess(_that);case LogoutError() when logouterror != null:
+return logouterror(_that);case _:
   return null;
 
 }
@@ -134,7 +140,7 @@ return doctorError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  specializationloading,TResult Function( List<Specialization>? specializationList)?  specializationSuccess,TResult Function( ErrorHandler errorHandler)?  specializationerror,TResult Function( List<Doctor>? doctorsList)?  doctorSuccess,TResult Function( ErrorHandler errorHandler)?  doctorError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  specializationloading,TResult Function( List<Specialization>? specializationList)?  specializationSuccess,TResult Function( ErrorHandler errorHandler)?  specializationerror,TResult Function( List<Doctor>? doctorsList)?  doctorSuccess,TResult Function( ErrorHandler errorHandler)?  doctorError,TResult Function()?  logoutSuccess,TResult Function()?  logouterror,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Specializationloading() when specializationloading != null:
@@ -142,7 +148,9 @@ return specializationloading();case Specializationsuccess() when specializationS
 return specializationSuccess(_that.specializationList);case Specializationerror() when specializationerror != null:
 return specializationerror(_that.errorHandler);case DoctorSuccess() when doctorSuccess != null:
 return doctorSuccess(_that.doctorsList);case DoctorError() when doctorError != null:
-return doctorError(_that.errorHandler);case _:
+return doctorError(_that.errorHandler);case LogoutSuccess() when logoutSuccess != null:
+return logoutSuccess();case LogoutError() when logouterror != null:
+return logouterror();case _:
   return orElse();
 
 }
@@ -160,7 +168,7 @@ return doctorError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  specializationloading,required TResult Function( List<Specialization>? specializationList)  specializationSuccess,required TResult Function( ErrorHandler errorHandler)  specializationerror,required TResult Function( List<Doctor>? doctorsList)  doctorSuccess,required TResult Function( ErrorHandler errorHandler)  doctorError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  specializationloading,required TResult Function( List<Specialization>? specializationList)  specializationSuccess,required TResult Function( ErrorHandler errorHandler)  specializationerror,required TResult Function( List<Doctor>? doctorsList)  doctorSuccess,required TResult Function( ErrorHandler errorHandler)  doctorError,required TResult Function()  logoutSuccess,required TResult Function()  logouterror,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case Specializationloading():
@@ -168,7 +176,9 @@ return specializationloading();case Specializationsuccess():
 return specializationSuccess(_that.specializationList);case Specializationerror():
 return specializationerror(_that.errorHandler);case DoctorSuccess():
 return doctorSuccess(_that.doctorsList);case DoctorError():
-return doctorError(_that.errorHandler);case _:
+return doctorError(_that.errorHandler);case LogoutSuccess():
+return logoutSuccess();case LogoutError():
+return logouterror();case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -185,7 +195,7 @@ return doctorError(_that.errorHandler);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  specializationloading,TResult? Function( List<Specialization>? specializationList)?  specializationSuccess,TResult? Function( ErrorHandler errorHandler)?  specializationerror,TResult? Function( List<Doctor>? doctorsList)?  doctorSuccess,TResult? Function( ErrorHandler errorHandler)?  doctorError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  specializationloading,TResult? Function( List<Specialization>? specializationList)?  specializationSuccess,TResult? Function( ErrorHandler errorHandler)?  specializationerror,TResult? Function( List<Doctor>? doctorsList)?  doctorSuccess,TResult? Function( ErrorHandler errorHandler)?  doctorError,TResult? Function()?  logoutSuccess,TResult? Function()?  logouterror,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case Specializationloading() when specializationloading != null:
@@ -193,7 +203,9 @@ return specializationloading();case Specializationsuccess() when specializationS
 return specializationSuccess(_that.specializationList);case Specializationerror() when specializationerror != null:
 return specializationerror(_that.errorHandler);case DoctorSuccess() when doctorSuccess != null:
 return doctorSuccess(_that.doctorsList);case DoctorError() when doctorError != null:
-return doctorError(_that.errorHandler);case _:
+return doctorError(_that.errorHandler);case LogoutSuccess() when logoutSuccess != null:
+return logoutSuccess();case LogoutError() when logouterror != null:
+return logouterror();case _:
   return null;
 
 }
@@ -544,5 +556,69 @@ as ErrorHandler,
 
 
 }
+
+/// @nodoc
+
+
+class LogoutSuccess implements HomeStates {
+  const LogoutSuccess();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutSuccess);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeStates.logoutSuccess()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class LogoutError implements HomeStates {
+  const LogoutError();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LogoutError);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+  return 'HomeStates.logouterror()';
+}
+
+
+}
+
+
+
 
 // dart format on

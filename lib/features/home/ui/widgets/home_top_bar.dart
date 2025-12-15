@@ -6,7 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HomeTopBar extends StatelessWidget {
-  const HomeTopBar({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey;
+  const HomeTopBar({super.key, required this.scaffoldKey});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,12 @@ class HomeTopBar extends StatelessWidget {
             child: SvgPicture.asset("assets/svgs/home_notification.svg"),
           ),
         ),
-        IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        IconButton(
+          onPressed: () {
+            scaffoldKey.currentState?.openDrawer();
+          },
+          icon: Icon(Icons.menu),
+        ),
       ],
     );
   }

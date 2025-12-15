@@ -130,7 +130,7 @@ class _TabBarWidgetState extends State<TabBarWidget>
                     verticalSpacing(18),
                     Text('Location Map', style: TextStyles.font18DarkBlueBold),
                     verticalSpacing(12),
-                    Image.asset('assets/images/Map.png'),
+                    Expanded(child: Image.asset('assets/images/Map.png')),
                   ],
                 ),
               ),

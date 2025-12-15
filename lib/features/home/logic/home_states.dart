@@ -20,4 +20,7 @@ class HomeStates with _$HomeStates {
   const factory HomeStates.doctorSuccess(List<Doctor>? doctorsList) =
       DoctorSuccess;
   const factory HomeStates.doctorError(ErrorHandler errorHandler) = DoctorError;
+  //Logout States
+  const factory HomeStates.logoutSuccess() = LogoutSuccess;
+  const factory HomeStates.logouterror() = LogoutError;
 }

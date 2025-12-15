@@ -1,6 +1,9 @@
 import 'dart:developer';
 
+import 'package:doc_doc/core/helpers/extentions.dart';
 import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/core/routing/routes.dart';
+import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
@@ -14,12 +17,27 @@ import 'package:doc_doc/features/home/ui/widgets/home_top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  // int _selectedIndex = 0;
+
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
@@ -28,13 +46,45 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HomeTopBar(),
+              HomeTopBar(scaffoldKey: _scaffoldKey),
               const DoctorsBlueContainer(),
               verticalSpacing(16),
               const DoctorsSpecialitySeeAll(),
               verticalSpacing(8),
               SpecializationsBlocBuilder(),
               DoctorsBlocBuilder(),
+            ],
+          ),
+        ),
+      ),
+      drawer: BlocListener<HomeCubit, HomeStates>(
+        listener: (context, state) {
+          if (state is LogoutSuccess) {
+            context.pushReplacementNamed(Routes.loginScreen);
+          } else if (state is LogoutError) {
+            // Optional: show a snackbar or toast
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text("Logout failed")));
+          }
+        },
+        child: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              const DrawerHeader(
+                decoration: BoxDecoration(color: ColorsManager.secondaryBlue),
+                child: Text(''),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  context.read<HomeCubit>().emitLogoutStates();
+                },
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text('Log out'),
+              ),
             ],
           ),
         ),
