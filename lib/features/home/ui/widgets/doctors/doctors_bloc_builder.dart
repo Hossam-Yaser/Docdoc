@@ -1,6 +1,7 @@
+import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors/doctors_list_view.dart';
+import 'package:doc_doc/core/widgets/doctors/doctors_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,7 @@ class DoctorsBlocBuilder extends StatelessWidget {
     );
   }
 
-  Widget setupSuccess(doctorsList) {
+  Widget setupSuccess(List<Doctor>? doctorsList) {
     return DoctorsListView(doctorsList: doctorsList);
   }
 

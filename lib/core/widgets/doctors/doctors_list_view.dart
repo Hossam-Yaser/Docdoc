@@ -1,7 +1,7 @@
 import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
-import 'package:doc_doc/features/home/ui/widgets/doctors/doctors_list_view_item.dart';
+import 'package:doc_doc/core/widgets/doctors/doctors_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
