@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
+import 'package:doc_doc/features/doctor_details/ui/widgets/reviewer_card.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:flutter/material.dart';
 
@@ -36,15 +38,15 @@ class _TabBarWidgetState extends State<TabBarWidget>
         Container(
           decoration: BoxDecoration(
             border: Border(
-              bottom: BorderSide(color: Colors.grey[300]!, width: 1),
+              bottom: BorderSide(color: ColorsManager.lightGrey, width: 1),
             ),
           ),
           child: TabBar(
             controller: _tabController,
             labelColor: ColorsManager.mainBlue,
-            unselectedLabelColor: Colors.grey,
+            unselectedLabelColor: ColorsManager.grey,
             labelStyle: TextStyles.font14BlueSemiBold,
-            indicatorColor: Colors.blue,
+            indicatorColor: ColorsManager.mainBlue,
             indicatorWeight: 3,
             tabs: const [
               Tab(text: 'About'),
@@ -66,58 +68,85 @@ class _TabBarWidgetState extends State<TabBarWidget>
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('About me', style: TextStyles.font18DarkBlueBold),
-                    const SizedBox(height: 12),
+                    verticalSpacing(12),
                     Text(
                       widget.doctor.description ??
                           'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[700],
-                        height: 1.5,
-                      ),
+                      style: TextStyles.font14lightGreyregular,
                     ),
-                    const SizedBox(height: 24),
+                    verticalSpacing(24),
                     Text('Working Time', style: TextStyles.font18DarkBlueBold),
-                    const SizedBox(height: 12),
+                    verticalSpacing(12),
                     Text(
                       "Start Time: ${widget.doctor.startTime} - End Time: ${widget.doctor.endTime}",
                       style: TextStyles.font14lightGreyregular,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 24),
+                    verticalSpacing(24),
                     Text('STR', style: TextStyles.font18DarkBlueBold),
-                    const SizedBox(height: 12),
+                    verticalSpacing(12),
                     Text(
                       '4726482464',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+                      style: TextStyles.font14lightGreyregular,
                     ),
-                    const SizedBox(height: 24),
+                    verticalSpacing(24),
                     Text(
-                      'Pengalaman Praktik',
+                      widget.doctor.degree ?? "",
                       style: TextStyles.font18DarkBlueBold,
                     ),
-                    const SizedBox(height: 12),
+                    verticalSpacing(12),
                     Text(
-                      'RSPAD Gatot Soebroto',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey[800],
-                        fontWeight: FontWeight.w500,
-                      ),
+                      widget.doctor.specialization?.name ??
+                          'RSPAD Gatot Soebroto',
+                      style: TextStyles.font14DarkBlueMedium,
                     ),
-                    const SizedBox(height: 4),
+                    verticalSpacing(4),
                     Text(
-                      '2017 - sekarang',
-                      style: TextStyle(fontSize: 14, color: Colors.grey[600]),
+                      widget.doctor.address ?? '2017 - sekarang',
+                      style: TextStyles.font14lightGreyregular,
                     ),
                   ],
                 ),
               ),
 
               // Location Tab
-              const Center(child: Text('Location Content')),
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Practice Place',
+                      style: TextStyles.font18DarkBlueBold,
+                    ),
+                    verticalSpacing(12),
+                    Text(
+                      widget.doctor.address ??
+                          'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
+                      style: TextStyles.font14lightGreyregular,
+                    ),
+                    verticalSpacing(18),
+                    Text('Location Map', style: TextStyles.font18DarkBlueBold),
+                    verticalSpacing(12),
+                    Image.asset('assets/images/Map.png'),
+                  ],
+                ),
+              ),
 
               // Reviews Tab
-              const Center(child: Text('Reviews Content')),
+              Container(
+                padding: EdgeInsets.all(16),
+                height: double.infinity,
+                width: double.infinity,
+                child: ListView.builder(
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return ReviewCard();
+                  },
+                ),
+              ),
             ],
           ),
         ),
