@@ -26,6 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
     response.when(
       success: (loginresponse) async {
         await saveUserToken(loginresponse.data?.token ?? "");
+        userName = loginresponse.data?.username;
         emit(LoginState.success(loginresponse));
       },
       failure: (error) {

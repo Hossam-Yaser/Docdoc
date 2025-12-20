@@ -29,7 +29,6 @@ class DoctorDetails extends StatelessWidget {
               verticalSpacing(32),
               // Doctor Info Section
               DoctorCard(doctor: doctor),
-
               // TabBar
               Expanded(child: TabBarWidget(doctor: doctor)),
 
