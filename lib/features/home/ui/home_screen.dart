@@ -26,13 +26,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  // int _selectedIndex = 0;
-
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +53,9 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: BlocListener<HomeCubit, HomeStates>(
         listener: (context, state) {
           if (state is LogoutSuccess) {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(SnackBar(content: Text("Logout Success ✅")));
             context.pushReplacementNamed(Routes.loginScreen);
           } else if (state is LogoutError) {
             // Optional: show a snackbar or toast

@@ -63,7 +63,7 @@ class _TabBarWidgetState extends State<TabBarWidget>
             children: [
               // About Tab
               SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -112,7 +112,7 @@ class _TabBarWidgetState extends State<TabBarWidget>
 
               // Location Tab
               Padding(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,7 +137,7 @@ class _TabBarWidgetState extends State<TabBarWidget>
 
               // Reviews Tab
               Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
                 height: double.infinity,
                 width: double.infinity,
                 child: ListView.builder(

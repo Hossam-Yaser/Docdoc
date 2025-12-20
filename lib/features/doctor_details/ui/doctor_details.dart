@@ -18,8 +18,10 @@ class DoctorDetails extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               //App Bar
               verticalSpacing(16),
@@ -36,14 +38,15 @@ class DoctorDetails extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
         child: AppTextButton(
           buttonText: "Make An Appointment",
           textStyle: TextStyles.font16WhiteSemiBold,
           onPressed: () {},
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
