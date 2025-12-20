@@ -1,3 +1,4 @@
+import 'package:doc_doc/core/helpers/constants.dart';
 import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
@@ -16,7 +17,7 @@ class HomeTopBar extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Hi, Omar", style: TextStyles.font18DarkBlueBold),
+            Text("Hi, $userName", style: TextStyles.font18DarkBlueBold),
             SizedBox(height: 10.h),
             Text("How Are you Today?", style: TextStyles.font13greyregular),
           ],
