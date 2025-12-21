@@ -88,7 +88,7 @@ class TextStyles {
     fontFamily: "Inter",
   );
   static TextStyle font14Greyregular = TextStyle(
-    fontSize: 16.sp,
+    fontSize: 14.sp,
     fontWeight: FontweightHelper.regular,
     color: ColorsManager.grey,
     fontFamily: "Inter",
@@ -104,6 +104,12 @@ class TextStyles {
     fontSize: 16.sp,
     fontWeight: FontweightHelper.medium,
     color: ColorsManager.darkBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font16LightGreyMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.lightGrey,
     fontFamily: "Inter",
   );
 
@@ -130,6 +136,18 @@ class TextStyles {
     fontSize: 24.sp,
     fontWeight: FontweightHelper.bold,
     color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
+  static TextStyle font24GreenMedium = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontweightHelper.medium,
+    color: Colors.green,
+    fontFamily: "Inter",
+  );
+  static TextStyle font24RedMedium = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontweightHelper.medium,
+    color: Colors.red,
     fontFamily: "Inter",
   );
 

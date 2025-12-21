@@ -2,6 +2,7 @@ import 'package:doc_doc/core/di/depandency_injection.dart';
 import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/features/all_speciality/logic/all_speciality_cubit.dart';
 import 'package:doc_doc/features/all_speciality/ui/all_speciality_screen.dart';
+import 'package:doc_doc/features/appointments/ui/appointments_screen.dart';
 import 'package:doc_doc/features/doctor_details/ui/doctor_details.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/ui/home_screen.dart';
@@ -62,6 +63,8 @@ class AppRouter {
           builder: (_) => const DoctorDetails(),
           settings: settings,
         );
+      case Routes.appointmentsScreen:
+        return MaterialPageRoute(builder: (_) => AppointmentsScreen());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
