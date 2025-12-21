@@ -14,6 +14,12 @@ class HomeTopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        IconButton(
+          onPressed: () {
+            scaffoldKey.currentState?.openDrawer();
+          },
+          icon: Icon(Icons.menu),
+        ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,12 +48,6 @@ class HomeTopBar extends StatelessWidget {
             backgroundColor: ColorsManager.lighterGrey,
             child: SvgPicture.asset("assets/svgs/home_notification.svg"),
           ),
-        ),
-        IconButton(
-          onPressed: () {
-            scaffoldKey.currentState?.openDrawer();
-          },
-          icon: Icon(Icons.menu),
         ),
       ],
     );

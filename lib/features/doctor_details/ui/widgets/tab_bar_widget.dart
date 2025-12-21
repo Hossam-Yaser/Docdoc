@@ -32,125 +32,133 @@ class _TabBarWidgetState extends State<TabBarWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        // TabBar
-        Container(
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(color: ColorsManager.lightGrey, width: 1),
+    return Expanded(
+      child: Column(
+        children: [
+          // TabBar
+          Container(
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: ColorsManager.lightGrey, width: 1),
+              ),
+            ),
+            child: TabBar(
+              controller: _tabController,
+              labelColor: ColorsManager.mainBlue,
+              unselectedLabelColor: ColorsManager.grey,
+              labelStyle: TextStyles.font14BlueSemiBold,
+              indicatorColor: ColorsManager.mainBlue,
+              indicatorWeight: 3,
+              tabs: const [
+                Tab(text: 'About'),
+                Tab(text: 'Location'),
+                Tab(text: 'Reviews'),
+              ],
             ),
           ),
-          child: TabBar(
-            controller: _tabController,
-            labelColor: ColorsManager.mainBlue,
-            unselectedLabelColor: ColorsManager.grey,
-            labelStyle: TextStyles.font14BlueSemiBold,
-            indicatorColor: ColorsManager.mainBlue,
-            indicatorWeight: 3,
-            tabs: const [
-              Tab(text: 'About'),
-              Tab(text: 'Location'),
-              Tab(text: 'Reviews'),
-            ],
+
+          // TabBarView
+          Expanded(
+            child: TabBarView(
+              controller: _tabController,
+              children: [
+                // About Tab
+                SingleChildScrollView(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('About me', style: TextStyles.font18DarkBlueBold),
+                      verticalSpacing(12),
+                      Text(
+                        widget.doctor.description ??
+                            'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
+                        style: TextStyles.font14lightGreyregular,
+                      ),
+                      verticalSpacing(24),
+                      Text(
+                        'Working Time',
+                        style: TextStyles.font18DarkBlueBold,
+                      ),
+                      verticalSpacing(12),
+                      Text(
+                        "Start Time: ${widget.doctor.startTime} - End Time: ${widget.doctor.endTime}",
+                        style: TextStyles.font14lightGreyregular,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      verticalSpacing(24),
+                      Text('STR', style: TextStyles.font18DarkBlueBold),
+                      verticalSpacing(12),
+                      Text(
+                        '4726482464',
+                        style: TextStyles.font14lightGreyregular,
+                      ),
+                      verticalSpacing(24),
+                      Text(
+                        widget.doctor.degree ?? "",
+                        style: TextStyles.font18DarkBlueBold,
+                      ),
+                      verticalSpacing(12),
+                      Text(
+                        widget.doctor.specialization?.name ??
+                            'RSPAD Gatot Soebroto',
+                        style: TextStyles.font14DarkBlueMedium,
+                      ),
+                      verticalSpacing(4),
+                      Text(
+                        widget.doctor.address ?? '2017 - sekarang',
+                        style: TextStyles.font14lightGreyregular,
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Location Tab
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Practice Place',
+                        style: TextStyles.font18DarkBlueBold,
+                      ),
+                      verticalSpacing(12),
+                      Text(
+                        widget.doctor.address ??
+                            'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
+                        style: TextStyles.font14lightGreyregular,
+                      ),
+                      verticalSpacing(18),
+                      Text(
+                        'Location Map',
+                        style: TextStyles.font18DarkBlueBold,
+                      ),
+                      verticalSpacing(12),
+                      Expanded(child: Image.asset('assets/images/Map.png')),
+                    ],
+                  ),
+                ),
+
+                // Reviews Tab
+                Container(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+                  height: double.infinity,
+                  width: double.infinity,
+                  child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      return ReviewCard();
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-
-        // TabBarView
-        Expanded(
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              // About Tab
-              SingleChildScrollView(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('About me', style: TextStyles.font18DarkBlueBold),
-                    verticalSpacing(12),
-                    Text(
-                      widget.doctor.description ??
-                          'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
-                      style: TextStyles.font14lightGreyregular,
-                    ),
-                    verticalSpacing(24),
-                    Text('Working Time', style: TextStyles.font18DarkBlueBold),
-                    verticalSpacing(12),
-                    Text(
-                      "Start Time: ${widget.doctor.startTime} - End Time: ${widget.doctor.endTime}",
-                      style: TextStyles.font14lightGreyregular,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    verticalSpacing(24),
-                    Text('STR', style: TextStyles.font18DarkBlueBold),
-                    verticalSpacing(12),
-                    Text(
-                      '4726482464',
-                      style: TextStyles.font14lightGreyregular,
-                    ),
-                    verticalSpacing(24),
-                    Text(
-                      widget.doctor.degree ?? "",
-                      style: TextStyles.font18DarkBlueBold,
-                    ),
-                    verticalSpacing(12),
-                    Text(
-                      widget.doctor.specialization?.name ??
-                          'RSPAD Gatot Soebroto',
-                      style: TextStyles.font14DarkBlueMedium,
-                    ),
-                    verticalSpacing(4),
-                    Text(
-                      widget.doctor.address ?? '2017 - sekarang',
-                      style: TextStyles.font14lightGreyregular,
-                    ),
-                  ],
-                ),
-              ),
-
-              // Location Tab
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Practice Place',
-                      style: TextStyles.font18DarkBlueBold,
-                    ),
-                    verticalSpacing(12),
-                    Text(
-                      widget.doctor.address ??
-                          'Dr. Jenny Watson is the top most Immunologists specialist in Christ Hospital at London. She achieved several awards for her wonderful contribution in medical field. She is available for private consultation.',
-                      style: TextStyles.font14lightGreyregular,
-                    ),
-                    verticalSpacing(18),
-                    Text('Location Map', style: TextStyles.font18DarkBlueBold),
-                    verticalSpacing(12),
-                    Expanded(child: Image.asset('assets/images/Map.png')),
-                  ],
-                ),
-              ),
-
-              // Reviews Tab
-              Container(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                height: double.infinity,
-                width: double.infinity,
-                child: ListView.builder(
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return ReviewCard();
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

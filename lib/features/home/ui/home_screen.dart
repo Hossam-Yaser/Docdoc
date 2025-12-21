@@ -6,6 +6,7 @@ import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
+import 'package:doc_doc/core/widgets/app_text_button.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
@@ -75,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               children: [
                 Container(
+                  padding: EdgeInsets.symmetric(vertical: 16.h),
                   color: Colors.white,
                   child: Row(
                     children: [
@@ -96,27 +98,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 Expanded(
                   child: ListView(
                     padding: EdgeInsets.zero,
-                    children: const [
-                      // Add drawer items here if needed
+                    children: [
+                      AppTextButton(
+                        buttonText: 'My Appointment  📅',
+                        backgroundColor: ColorsManager.secondaryBlue,
+                        textStyle: TextStyles.font18DarkBlueSemiBold,
+                        onPressed: () {
+                          context.pushNamed(Routes.appointmentsScreen);
+                        },
+                      ),
                     ],
                   ),
                 ),
 
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: FloatingActionButton.extended(
-                      onPressed: () {
-                        context.read<HomeCubit>().emitLogoutStates();
-                      },
-                      backgroundColor: ColorsManager.secondaryBlue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      label: const Text('Log out'),
-                    ),
-                  ),
+                AppTextButton(
+                  buttonText: 'Log out   ➜]',
+                  backgroundColor: ColorsManager.secondaryBlue,
+                  textStyle: TextStyles.font18DarkBlueSemiBold,
+                  onPressed: () {
+                    context.read<HomeCubit>().emitLogoutStates();
+                  },
                 ),
               ],
             ),

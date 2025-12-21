@@ -30,7 +30,7 @@ class DoctorDetails extends StatelessWidget {
               // Doctor Info Section
               DoctorCard(doctor: doctor),
               // TabBar
-              Expanded(child: TabBarWidget(doctor: doctor)),
+              TabBarWidget(doctor: doctor),
 
               // TabBarView
             ],
