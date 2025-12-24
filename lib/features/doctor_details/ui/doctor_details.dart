@@ -1,4 +1,6 @@
+import 'package:doc_doc/core/helpers/extentions.dart';
 import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
@@ -42,7 +44,9 @@ class DoctorDetails extends StatelessWidget {
         child: AppTextButton(
           buttonText: "Make An Appointment",
           textStyle: TextStyles.font16WhiteSemiBold,
-          onPressed: () {},
+          onPressed: () {
+            context.pushNamed(Routes.bookAppointmentScreen);
+          },
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

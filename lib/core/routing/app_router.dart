@@ -3,6 +3,7 @@ import 'package:doc_doc/core/routing/routes.dart';
 import 'package:doc_doc/features/all_speciality/logic/all_speciality_cubit.dart';
 import 'package:doc_doc/features/all_speciality/ui/all_speciality_screen.dart';
 import 'package:doc_doc/features/appointments/ui/appointments_screen.dart';
+import 'package:doc_doc/features/book_appointment/ui/book_appointment_scren.dart';
 import 'package:doc_doc/features/doctor_details/ui/doctor_details.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/ui/home_screen.dart';
@@ -65,6 +66,8 @@ class AppRouter {
         );
       case Routes.appointmentsScreen:
         return MaterialPageRoute(builder: (_) => AppointmentsScreen());
+      case Routes.bookAppointmentScreen:
+        return MaterialPageRoute(builder: (_) => BookAppointmentScren());
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
