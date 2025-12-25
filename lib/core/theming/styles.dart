@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
+  static TextStyle font10BlueRegular = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontweightHelper.regular,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
   static TextStyle font12BlueRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontweightHelper.regular,
@@ -27,6 +33,12 @@ class TextStyles {
     fontSize: 13.sp,
     fontWeight: FontweightHelper.regular,
     color: ColorsManager.grey,
+    fontFamily: "Inter",
+  );
+  static TextStyle font13whiteregular = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontweightHelper.regular,
+    color: Colors.white,
     fontFamily: "Inter",
   );
   static TextStyle font13Blueregular = TextStyle(
@@ -74,6 +86,12 @@ class TextStyles {
     color: ColorsManager.mainBlue,
     fontFamily: "Inter",
   );
+  static TextStyle font14WhiteSemiBold = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontweightHelper.semiBold,
+    color: Colors.white,
+    fontFamily: "Inter",
+  );
   static TextStyle font15DarkBlueMedium = TextStyle(
     fontSize: 15.sp,
     fontWeight: FontweightHelper.medium,
@@ -106,10 +124,22 @@ class TextStyles {
     color: ColorsManager.darkBlue,
     fontFamily: "Inter",
   );
+  static TextStyle font16MainBluemedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
   static TextStyle font16LightGreyMedium = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontweightHelper.medium,
     color: ColorsManager.lightGrey,
+    fontFamily: "Inter",
+  );
+  static TextStyle font16GreyMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontweightHelper.medium,
+    color: ColorsManager.grey,
     fontFamily: "Inter",
   );
 

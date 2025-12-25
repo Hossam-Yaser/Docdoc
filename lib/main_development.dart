@@ -17,10 +17,14 @@ void main() async {
 }
 
 Future<void> checkIfLoggedinUser() async {
-  isOnboardingSeen =
-      await SharedPrefHelper.getBool(SharedPrefKeys.onboardingSeen) ?? false;
+  isOnboardingSeen = await SharedPrefHelper.getBool(
+    SharedPrefKeys.onboardingSeen,
+  );
   String? userToken = await SharedPrefHelper.getSecuredString(
     SharedPrefKeys.userToken,
   );
   isLoggedinUser = !userToken.isNullOrEmpty();
+  if (isLoggedinUser) {
+    userName = await SharedPrefHelper.getSecuredString(SharedPrefKeys.userName);
+  }
 }

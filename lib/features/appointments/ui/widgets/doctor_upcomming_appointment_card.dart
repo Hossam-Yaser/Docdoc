@@ -137,37 +137,34 @@ class DoctorAppointmentCard extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 18),
-                    ),
-                    child: const Text(
-                      'Cancel Appointment',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                      padding: EdgeInsets.symmetric(
+                        vertical: 18.h,
+                        horizontal: 1.w,
                       ),
+                    ),
+                    child: Text(
+                      'Cancel Appointment',
+                      style: TextStyles.font14BlueSemiBold,
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+                horizontalSpacing(16),
                 // Reschedule Button
                 Expanded(
                   child: ElevatedButton(
                     onPressed: onReschedule,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[600],
+                      backgroundColor: ColorsManager.mainBlue,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(50),
                       ),
-                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      padding: EdgeInsets.symmetric(vertical: 18.h),
                       elevation: 0,
                     ),
-                    child: const Text(
+                    child: Text(
                       'Reschedule',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                      style: TextStyles.font14WhiteSemiBold,
                     ),
                   ),
                 ),
