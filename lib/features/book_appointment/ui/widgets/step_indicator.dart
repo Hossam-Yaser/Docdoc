@@ -1,4 +1,5 @@
 import 'package:doc_doc/core/theming/colors.dart';
+import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:step_progress/step_progress.dart';
 
@@ -38,6 +39,7 @@ class StepIndicator extends StatelessWidget {
       stepLineStyle: const StepLineStyle(lineThickness: 2),
       defaultForegroundColor: ColorsManager.secondaryBlue,
       activeForegroundColor: ColorsManager.mainBlue,
+      nodeLabelStyle: StepLabelStyle(titleStyle: TextStyles.font10BlueRegular),
     );
   }
 }

@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextStyles {
+  static TextStyle font10BlueRegular = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontweightHelper.regular,
+    color: ColorsManager.mainBlue,
+    fontFamily: "Inter",
+  );
   static TextStyle font12BlueRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontweightHelper.regular,

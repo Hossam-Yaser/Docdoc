@@ -1,3 +1,4 @@
+import 'package:doc_doc/core/helpers/spacing.dart';
 import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:flutter/material.dart';
@@ -175,7 +176,7 @@ class _DateSelectorState extends State<DateSelector> {
                                   ? TextStyles.font13whiteregular
                                   : TextStyles.font13greyregular,
                             ),
-                            const SizedBox(height: 4),
+                            verticalSpacing(4),
                             Text(
                               date.date,
                               style: isSelected
@@ -196,7 +197,7 @@ class _DateSelectorState extends State<DateSelector> {
               onPressed: selectedIndex < dates.length - 1 ? _nextDate : null,
               icon: const Icon(Icons.chevron_right),
               color: Colors.black87,
-              disabledColor: Colors.grey[300],
+              disabledColor: ColorsManager.grey,
             ),
           ],
         ),

@@ -3,7 +3,8 @@ import 'package:doc_doc/core/theming/colors.dart';
 import 'package:doc_doc/core/theming/styles.dart';
 import 'package:doc_doc/core/widgets/app_text_button.dart';
 import 'package:doc_doc/features/all_speciality/ui/widgets/custom_app_bar.dart';
-import 'package:doc_doc/features/book_appointment/ui/widgets/date_and_time_step.dart';
+import 'package:doc_doc/features/book_appointment/ui/widgets/date_and_time_step_widgets/date_and_time_step.dart';
+import 'package:doc_doc/features/book_appointment/ui/widgets/payment_step_widgets/payment_step.dart';
 import 'package:doc_doc/features/book_appointment/ui/widgets/step_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,10 +31,22 @@ class _BookAppointmentScrenState extends State<BookAppointmentScren> {
   }
 
   void _finishBooking() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('Booking Complete!')));
-    // TODO: Navigate to next screen
+    showDialog(
+      context: context,
+      builder: (context) => Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Icon(Icons.check, color: ColorsManager.mainBlue, size: 80),
+            DefaultTextStyle(
+              style: TextStyles.font32BlueBold,
+              child: Text('Booked Successfully'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   Widget _buildStepContent() {
@@ -41,7 +54,7 @@ class _BookAppointmentScrenState extends State<BookAppointmentScren> {
       case 0:
         return DateAndTimeStep();
       case 1:
-        return SizedBox.expand();
+        return PaymentStep();
       case 2:
         return SizedBox.expand();
       default:
