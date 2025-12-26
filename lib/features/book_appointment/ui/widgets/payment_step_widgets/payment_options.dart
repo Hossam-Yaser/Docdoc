@@ -1,3 +1,6 @@
+import 'package:doc_doc/core/helpers/constants.dart';
+import 'package:doc_doc/features/book_appointment/ui/widgets/payment_step_widgets/card_option_tile.dart';
+import 'package:doc_doc/features/book_appointment/ui/widgets/payment_step_widgets/payment_method_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,7 +12,7 @@ class PaymentOptions extends StatefulWidget {
 }
 
 class _PaymentOptionsState extends State<PaymentOptions> {
-  String selectedPayment = 'credit_card';
+  String selectedPayment = PaymentMethod.creditCard;
   String? selectedCard;
 
   @override
@@ -17,134 +20,78 @@ class _PaymentOptionsState extends State<PaymentOptions> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Credit Card Option
-        _buildPaymentOption(
-          value: 'credit_card',
+        PaymentMethodTile(
+          value: PaymentMethod.creditCard,
           title: 'Credit Card',
-          isExpanded: selectedPayment == 'credit_card',
+          groupValue: selectedPayment,
+          onChanged: _onPaymentChanged,
         ),
 
-        // Credit Card Details (shown when expanded)
-        if (selectedPayment == 'credit_card') ...[
+        if (selectedPayment == PaymentMethod.creditCard) ...[
           const SizedBox(height: 8),
-          _buildCardOption(
-            cardType: 'mastercard',
+          CardOptionTile(
+            cardType: CardType.masterCard,
             cardName: 'Master Card',
-            icon: SvgPicture.asset('assets/svgs/mastercard.svg'),
+            iconPath: 'assets/svgs/mastercard.svg',
+            selectedCard: selectedCard,
+            onTap: _onCardSelected,
           ),
-          _buildCardOption(
-            cardType: 'amex',
+          CardOptionTile(
+            cardType: CardType.amex,
             cardName: 'American Express',
-            icon: SvgPicture.asset('assets/svgs/AmericanExpress.svg'),
+            iconPath: 'assets/svgs/AmericanExpress.svg',
+            selectedCard: selectedCard,
+            onTap: _onCardSelected,
           ),
-          _buildCardOption(
-            cardType: 'capital_one',
+          CardOptionTile(
+            cardType: CardType.capitalOne,
             cardName: 'Capital One',
-            icon: SvgPicture.asset('assets/svgs/CapitalOne.svg'),
+            iconPath: 'assets/svgs/CapitalOne.svg',
+            selectedCard: selectedCard,
+            onTap: _onCardSelected,
           ),
-          _buildCardOption(
-            cardType: 'barclays',
+          CardOptionTile(
+            cardType: CardType.barclays,
             cardName: 'Barclays',
-            icon: SvgPicture.asset('assets/svgs/Barclays.svg'),
+            iconPath: 'assets/svgs/Barclays.svg',
+            selectedCard: selectedCard,
+            onTap: _onCardSelected,
           ),
         ],
 
         const SizedBox(height: 8),
 
-        // Bank Transfer Option
-        _buildPaymentOption(
-          value: 'bank_transfer',
+        PaymentMethodTile(
+          value: PaymentMethod.bankTransfer,
           title: 'Bank Transfer',
-          isExpanded: false,
+          groupValue: selectedPayment,
+          onChanged: _onPaymentChanged,
         ),
 
         const SizedBox(height: 8),
 
-        // PayPal Option
-        _buildPaymentOption(
-          value: 'paypal',
+        PaymentMethodTile(
+          value: PaymentMethod.paypal,
           title: 'Paypal',
-          isExpanded: false,
+          groupValue: selectedPayment,
+          onChanged: _onPaymentChanged,
         ),
       ],
     );
   }
 
-  Widget _buildPaymentOption({
-    required String value,
-    required String title,
-    required bool isExpanded,
-  }) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          selectedPayment = value;
-          if (value != 'credit_card') {
-            selectedCard = null;
-          }
-        });
-      },
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Row(
-          children: [
-            Radio<String>(
-              value: value,
-              groupValue: selectedPayment,
-              onChanged: (String? newValue) {
-                setState(() {
-                  selectedPayment = newValue!;
-                  if (newValue != 'credit_card') {
-                    selectedCard = null;
-                  }
-                });
-              },
-              activeColor: Colors.blue,
-            ),
-            Text(
-              title,
-              style: const TextStyle(fontSize: 16, color: Colors.black87),
-            ),
-          ],
-        ),
-      ),
-    );
+  void _onPaymentChanged(String value) {
+    setState(() {
+      selectedPayment = value;
+      if (value != PaymentMethod.creditCard) {
+        selectedCard = null;
+      }
+    });
   }
 
-  Widget _buildCardOption({
-    required String cardType,
-    required String cardName,
-    required SvgPicture icon,
-  }) {
-    return InkWell(
-      onTap: () {
-        setState(() {
-          selectedCard = cardType;
-        });
-      },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-        margin: const EdgeInsets.only(left: 48.0, bottom: 8.0),
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300, width: 1),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 32,
-              height: 32,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(6)),
-              child: icon,
-            ),
-            const SizedBox(width: 12),
-            Text(
-              cardName,
-              style: const TextStyle(fontSize: 15, color: Colors.black87),
-            ),
-          ],
-        ),
-      ),
-    );
+  void _onCardSelected(String cardType) {
+    setState(() {
+      selectedCard = cardType;
+    });
   }
 }
