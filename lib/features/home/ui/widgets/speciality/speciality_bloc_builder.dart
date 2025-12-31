@@ -1,8 +1,10 @@
 import 'package:doc_doc/core/helpers/spacing.dart';
+import 'package:doc_doc/core/widgets/doctors/doctors_shimmer_loading.dart';
 import 'package:doc_doc/features/home/data/models/home_specializations_response_model.dart';
 import 'package:doc_doc/features/home/logic/home_cubit.dart';
 import 'package:doc_doc/features/home/logic/home_states.dart';
 import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_list_view.dart';
+import 'package:doc_doc/features/home/ui/widgets/speciality/speciality_shimmer_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,9 +41,9 @@ class SpecializationsBlocBuilder extends StatelessWidget {
     return Expanded(
       child: Column(
         children: [
-          // const SpecialityShimmerLoading(),
-          verticalSpacing(8),
-          // const DoctorsShimmerLoading(),
+          SpecialityShimmerLoading(),
+          verticalSpacing(10),
+          Expanded(child: DoctorsShimmerLoading()),
         ],
       ),
     );

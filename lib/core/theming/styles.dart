@@ -28,6 +28,12 @@ class TextStyles {
     color: ColorsManager.grey,
     fontFamily: "Inter",
   );
+  static TextStyle font12lightGreyregular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontweightHelper.regular,
+    color: ColorsManager.lightGrey,
+    fontFamily: "Inter",
+  );
 
   static TextStyle font13greyregular = TextStyle(
     fontSize: 13.sp,

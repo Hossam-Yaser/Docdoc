@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Optional: show a snackbar or toast
             ScaffoldMessenger.of(
               context,
-            ).showSnackBar(SnackBar(content: Text("Logout failed")));
+            ).showSnackBar(SnackBar(content: Text("Logout failed ❌")));
           }
         },
         child: Drawer(

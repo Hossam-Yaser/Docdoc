@@ -6,6 +6,7 @@ import 'package:doc_doc/features/all_speciality/ui/widgets/custom_app_bar.dart';
 import 'package:doc_doc/features/book_appointment/ui/widgets/date_and_time_step_widgets/date_and_time_step.dart';
 import 'package:doc_doc/features/book_appointment/ui/widgets/payment_step_widgets/payment_step.dart';
 import 'package:doc_doc/features/book_appointment/ui/widgets/step_indicator.dart';
+import 'package:doc_doc/features/book_appointment/ui/widgets/summary_step_widgets/summary_step_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,11 +53,11 @@ class _BookAppointmentScrenState extends State<BookAppointmentScren> {
   Widget _buildStepContent() {
     switch (_currentIndex) {
       case 0:
-        return DateAndTimeStep();
+        return const DateAndTimeStep();
       case 1:
-        return PaymentStep();
+        return const PaymentStep();
       case 2:
-        return SizedBox.expand();
+        return const AppointmentSummaryBody();
       default:
         return const SizedBox.shrink();
     }
@@ -88,6 +89,7 @@ class _BookAppointmentScrenState extends State<BookAppointmentScren> {
                   setState(() => _currentIndex = index);
                 },
               ),
+              verticalSpacing(15),
               Expanded(child: _buildStepContent()),
             ],
           ),
